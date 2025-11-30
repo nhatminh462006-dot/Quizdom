@@ -1,0 +1,58 @@
+﻿@model List<Quizdom.Models.HistoryViewModel>
+
+@{
+    ViewBag.Title = "Lịch Sử Làm Bài";
+}
+
+<style>
+    /* Sử dụng lại CSS từ các trang khác */
+    .history-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        color: white;
+    }
+
+    .history-item {
+        background-color: #222;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .score-badge {
+        font-weight: bold;
+        color: #FFD700;
+    }
+</style>
+
+<div class="history-container">
+    <h2 style="text-align: center; color: #6495ED; border-bottom: 1px solid #2e2e2e; padding-bottom: 10px;">Lịch Sử Làm Bài</h2>
+
+    
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <div class="history-item">
+                <div>
+                    
+                    <h4>@item.ExamTitle</h4>
+                    <p style="font-size: small; color: #aaa;">Thời gian: @item.SubmittedAt.ToString("HH:mm dd/MM/yyyy")</p>
+                </div>
+                <div class="score-badge">
+                    Điểm: @item.Score.ToString("F2")/100
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p style="text-align: center;">Bạn chưa có kết quả làm bài nào.</p>
+    }
+</div>

@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Quizdom</title>
+    <link rel="stylesheet" href="~/Content/style-home.css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1><a id="logo" href="/Home/Index">Quizdom.</a></h1>
+            <ul>
+                <li><a class="underline-text" href="/Home/Index">Trang Chủ</a></li>
+                <li><a class="underline-text" href="/Level/SelectLevel">Bài Tập</a></li>
+
+                @* THÊM LINK LỊCH SỬ LÀM BÀI (Chỉ khi đăng nhập) *@
+                @if (Session["Username"] != null)
+                {
+                    <li><a class="underline-text" href="@Url.Action("Index", "History")">Lịch Sử Làm Bài</a></li>
+                }
+
+                <li><a class="underline-text" href="/Home/About">Giới Thiệu</a></li>
+
+                @if (Session["Username"] == null)
+                {
+                    <li><a class="underline-text" href="/Account/Login">Đăng Nhập</a></li>
+                    <li><a class="underline-text" href="/Account/Register">Đăng Ký</a></li>
+                }
+                else
+                {
+                    <li>
+                        <a class="underline-text" href="@Url.Action("UserProfile", "Account")">
+                            Xin chào, @Session["Username"]!
+                        </a>
+                    </li>
+
+                    <li><a class="underline-text" href="/Account/Logout">Đăng Xuất</a></li>
+                }
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Quizdom</h1>
+        <h2>HỖ TRỢ BẠN HỌC TOÁN</h2>
+        <div class="image">
+            <img src="../img/banner.png" />
+        </div>
+
+        <p>Quizdom là một website tổng hợp các bài tập về bộ môn Toán học, giúp bạn dễ dàng ôn tập và phát triển kiến thức.</p>
+
+        <a href="/Level/SelectLevel" class="btn btn-primary">ÔN TẬP NGAY</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿@model Quizdom.Models.ExamViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<style>
+    body {
+        background-color: #0b0b0b;
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .exam-page-container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #1a1a1a;
+        border-radius: 10px;
+    }
+
+    .exam-title {
+        color: #6495ED;
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #2e2e2e;
+        padding-bottom: 10px;
+    }
+
+    .timer {
+        float: right;
+        font-size: 20px;
+        color: #FFD700;
+    }
+
+    .question-card {
+        background-color: #222;
+        padding: 25px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+        .question-card h3 {
+            color: #fff;
+            margin-top: 0;
+        }
+
+    .choice-option {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+        .choice-option:hover {
+            background-color: #333;
+        }
+
+    .submit-btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #6495ED;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        margin-top: 30px;
+        transition: background-color 0.3s;
+    }
+
+        .submit-btn:hover {
+            background-color: #4a7fd6;
+        }
+</style>
+
+<div class="exam-page-container">
+    @using (Html.BeginForm("Submit", "Exam", FormMethod.Post))
+    {
+        @Html.Hidden("examId", Model.ExamID)
+
+        <div class="exam-title">
+            <span class="timer">⏰ @Model.DurationMinutes:00</span>
+            <h1>@Model.Title</h1>
+            <div style="clear: both;"></div>
+        </div>
+
+        foreach (var question in Model.Questions)
+        {
+            <div class="question-card">
+                <h3>@question.QuestionText</h3>
+
+                @foreach (var choice in question.Choices)
+                {
+                    <div class="choice-option">
+                        <input type="radio"
+                               name="Q_@question.QuestionID"
+                               value="@choice.ChoiceID"
+                               id="Choice_@choice.ChoiceID"
+                               required />
+                        <label for="Choice_@choice.ChoiceID">@choice.ChoiceText</label>
+                    </div>
+                }
+            </div>
+        }
+
+        <button type="submit" class="submit-btn">Nộp Bài và Xem Kết Quả</button>
+    }
+</div>

@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Chọn cấp độ ôn tập";
+
+}
+
+<style>
+    
+    body {
+        background-color: #0b0b0b;
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .level-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+        text-align: center;
+    }
+
+    .level-box {
+        background: linear-gradient(145deg, #111, #1a1a1a);
+        border-radius: 20px;
+        padding: 60px 40px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        width: 70%;
+        max-width: 900px;
+    }
+
+        .level-box h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+    .level-options {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+    }
+
+    .level-option {
+        background: linear-gradient(145deg, #1b1b1b, #292929);
+        border: 2px solid #2e2e2e;
+        border-radius: 15px;
+        padding: 40px 60px;
+        width: 280px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .level-option:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(145deg, #222, #333);
+            box-shadow: 0 0 25px rgba(100, 150, 255, 0.4);
+        }
+
+        .level-option h2 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .level-option p {
+            color: #aaa;
+            font-size: 15px;
+        }
+
+    a {
+        text-decoration: none;
+    }
+
+</style>
+
+<div class="level-container">
+    <div class="level-box">
+        <h1>Chọn Cấp Độ Ôn Tập</h1>
+        <p>Hãy chọn cấp độ phù hợp để bắt đầu rèn luyện kỹ năng toán học của bạn</p>
+
+        <div class="level-options">
+            <a href="@Url.Action("Index", "Level", new { level = "basic" })">
+                <div class="level-option">
+                    <h2>🧮 Toán Cơ Bản</h2>
+                    <p>Phù hợp cho người mới bắt đầu hoặc cần củng cố kiến thức nền.</p>
+                </div>
+            </a>
+
+            <a href="@Url.Action("Index", "Level", new { level = "advanced" })">
+                <div class="level-option">
+                    <h2>📘 Toán Nâng Cao</h2>
+                    <p>Dành cho học sinh khá giỏi muốn thử thách và phát triển tư duy.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

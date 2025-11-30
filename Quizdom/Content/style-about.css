@@ -1,0 +1,111 @@
+﻿:root {
+    --primary: white;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Arial;
+    color: var(--primary);
+}
+
+body {
+    min-height: 100px;
+    background-image: url(../img/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 32px;
+    background-color: black;
+}
+
+    .navbar ul {
+        display: flex;
+        list-style-type: none;
+        gap: 40px;
+    }
+
+#logo {
+    font-size: 40px;
+    text-decoration: none;
+}
+
+    #logo:hover {
+        cursor: pointer;
+    }
+
+.underline-text {
+    text-decoration-color: transparent;
+    text-underline-offset: 8px;
+    transition-property: text-decoration-color;
+    transition-duration: 1s;
+}
+
+    .underline-text:hover {
+        text-decoration-color: var(--primary);
+        transition-property: text-decoration-color;
+        transition-duration: 1s;
+    }
+
+.main {
+    padding-top: 100px;
+    width:1120px;
+    max-width:95%;
+    display:flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main-text {
+    width: 600px;
+}
+
+.main-text h1 {
+    font-size: 60px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.main-text h5 {
+    font-size: 30px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.main-text p {
+    font-size: 25px;
+    letter-spacing: 1px;
+    line-height: 30px;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    text-align:justify;
+    display:block;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 250px;
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+    margin-left:auto;
+}
+
+span {
+    color:crimson;
+}
+
+.img {
+    width: 350px;
+    height: auto;
+}

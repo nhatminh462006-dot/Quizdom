@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>About</title>
+    <link rel="stylesheet" href="~/Content/style-about.css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1><a id="logo" href="/Home/Index">Quizdom.</a></h1>
+            <ul>
+                <li><a class="underline-text" href="@Url.Action("Index", "Home")">Trang Chủ</a></li>
+                <li><a class="underline-text" href="@Url.Action("SelectLevel", "Level")">Bài Tập</a></li>
+
+                @* THÊM LINK LỊCH SỬ LÀM BÀI (Chỉ khi đăng nhập) *@
+                @if (Session["Username"] != null)
+                {
+                    <li><a class="underline-text" href="@Url.Action("Index", "History")">Lịch Sử Làm Bài</a></li>
+                }
+
+                <li><a class="underline-text" href="@Url.Action("About", "Home")">Giới Thiệu</a></li>
+                <li><a class="underline-text" href="">Hỗ Trợ</a></li> @* Giữ nguyên Hỗ Trợ vì không rõ link *@
+
+                @* LOGIC ĐĂNG NHẬP / ĐĂNG XUẤT/ CHÀO MỪNG *@
+                @if (Session["Username"] != null)
+                {
+                    <li>
+                        <a class="underline-text" href="@Url.Action("UserProfile", "Account")">
+                            Xin chào, @Session["Username"]!
+                        </a>
+                    </li>
+                    <li><a class="underline-text" href="@Url.Action("Logout", "Account")">Đăng Xuất</a></li>
+                }
+                else
+                {
+                    <li><a class="underline-text" href="@Url.Action("Login", "Account")">Đăng Nhập</a></li>
+                    <li><a class="underline-text" href="@Url.Action("Register", "Account")">Đăng Ký</a></li>
+                }
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <img src="../img/banner.png" />
+        <div class="main-text">
+            <h1>GIỚI THIỆU</h1>
+            <h5>Bọn mình là <span>nhóm 7</span></h5><hr />
+            <p>
+                Đây là bài tập đồ án của bọn mình. Chủ đề của mình là Thi cử, do đó bọn mình đã chọn làm về một website ôn tập trắc nghiệm bộ môn Toán học. <br />
+                Vì đây là lần đầu tiên bọn mình làm đồ án nên sản phẩm sẽ còn nhiều thiếu xót. Mọi thắc mắc và phản hồi, góp ý bọn mình sẽ rất sẵn lòng tiếp nhận và cải thiện!
+            </p>
+        </div>
+    </div>
+</body>
+</html>

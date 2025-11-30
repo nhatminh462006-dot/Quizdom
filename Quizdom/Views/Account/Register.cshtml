@@ -1,0 +1,75 @@
+﻿@model Quizdom.Models.User
+@{
+    ViewBag.Title = "Đăng ký";
+}
+
+<style>
+    body {
+        background: #121212;
+        font-family: Arial;
+        color: #e0e0e0;
+    }
+
+    .box {
+        width: 350px;
+        margin: 80px auto;
+        background: #1e1e1e;
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background: #2a2a2a;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        background: #444;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        button:hover {
+            background: #666;
+        }
+
+    a {
+        color: #bbb;
+    }
+</style>
+
+<div class="box">
+    <h2>Đăng ký tài khoản</h2>
+
+    <form method="post">
+        <label>Họ và tên</label>
+        <input type="text" name="FullName" />
+
+        <label>Username</label>
+        <input type="text" name="Username" />
+
+        <label>Password</label>
+        <input type="password" name="Password" />
+
+        <label>Email</label>
+        <input type="email" name="Email" />
+
+        <button type="submit">Đăng ký</button>
+
+        <p style="color:red">@ViewBag.Error</p>
+    </form>
+
+    <p>
+        Đã có tài khoản? <a href="/Account/Login">Đăng nhập</a>
+    </p>
+</div>

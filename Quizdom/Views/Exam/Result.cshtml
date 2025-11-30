@@ -1,0 +1,96 @@
+﻿@* File: Quizdom.Views/Exam/Result.cshtml *@
+@model Quizdom.Models.Result
+
+@{
+    ViewBag.Title = "Kết Quả Bài Thi";
+}
+
+<style>
+    body {
+        background-color: #0b0b0b;
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .result-container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: #1a1a1a;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .result-icon {
+        font-size: 80px;
+        margin-bottom: 20px;
+    }
+
+    .result-container h1 {
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .score-box {
+        background: linear-gradient(145deg, #6495ED, #4a7fd6); /* Màu xanh đẹp */
+        padding: 25px 40px;
+        border-radius: 10px;
+        margin: 30px auto;
+        max-width: 300px;
+        box-shadow: 0 5px 20px rgba(100, 150, 255, 0.4);
+    }
+
+        .score-box p {
+            margin: 0;
+            font-size: 18px;
+            color: #eee;
+        }
+
+        .score-box h2 {
+            font-size: 48px;
+            color: #fff;
+            margin: 5px 0 0 0;
+        }
+
+    .details p {
+        color: #aaa;
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 12px 25px;
+        background-color: #FFD700; /* Màu vàng */
+        color: #1a1a1a;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+        .back-btn:hover {
+            background-color: #e6c200;
+        }
+</style>
+
+<div class="result-container">
+    <div class="result-icon">🎉</div>
+    <h1>Chúc mừng! Bạn đã hoàn thành bài thi!</h1>
+    <p>Dưới đây là kết quả của bạn cho bài thi **@Model.Exam.Title**.</p>
+
+    <div class="score-box">
+        <p>Điểm của bạn là</p>
+        <h2>@Model.Score/100</h2>
+    </div>
+
+    <div class="details">
+        <p>Bài thi: **@Model.Exam.Title**</p>
+        <p>Thí sinh: **@Model.User.FullName**</p>
+        <p>Thời gian nộp bài: @Model.SubmittedAt.Value.ToString("HH:mm dd/MM/yyyy")</p>
+    </div>
+
+    <a href="@Url.Action("SelectLevel", "Level")" class="back-btn">Chọn Cấp Độ/Bài Thi Khác</a>
+    <a href="@Url.Action("Index", "Home")" class="back-btn">Trở về trang chủ</a>
+</div>
